@@ -5,7 +5,9 @@ import App from './components/App/App';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <div className='indexStyle'>
+      <App />
+    </div>
   </React.StrictMode>,
   document.getElementById('root')
 );
