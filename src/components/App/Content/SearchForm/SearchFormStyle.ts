@@ -4,6 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles({
     content: {
         display: 'flex',
+        flexDirection:'column',
         justifyContent: 'center',
         alignItems: 'center',
         width: '100%',
@@ -25,7 +26,14 @@ const useStyles = makeStyles({
         paddingBottom:'2vh',
         display:'flex',
         justifyContent:'center'
-    }
+    },
+    weeklyVolunteerStyle:{
+        paddingTop:'2vh'
+    },
+    doneIcons: {
+        paddingLeft:'0.5vw',
+        paddingTop:'0.5vh',
+    },
 });
 
 export default useStyles;
