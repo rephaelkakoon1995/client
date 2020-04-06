@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useMediaQuery } from 'react-responsive';
 import Typography from '@material-ui/core/Typography';
 import Icon from '@material-ui/core/Icon';
 import Card from '@material-ui/core/Card';
@@ -16,6 +17,14 @@ const LOADING_DELAY = 1000;
 
 const SearchForm: React.FC = (): JSX.Element => {
     const classes = useStyles();
+
+    const isDesktopOrLaptop = useMediaQuery({
+        query: '(min-device-width: 1224px)'
+    });
+
+    const isTabletOrMobileDevice = useMediaQuery({
+        query: '(max-device-width: 1224px)'
+    })
 
     const [isLoading, setIsLoading] = useState(false);
     const [weeklyVolunteerName, setWeeklyVolunteerName] = useState('');
@@ -36,7 +45,7 @@ const SearchForm: React.FC = (): JSX.Element => {
 
     return (
         <div className={classes.content}>
-            <Card className={classes.root}>
+            <Card className={isDesktopOrLaptop ? classes.rootDesktopOrLaptop : classes.rootTabletOrMobileDevice}>
                 <CardMedia
                     className={classes.media}
                     image='/assets/find.jpg'
@@ -73,7 +82,7 @@ const SearchForm: React.FC = (): JSX.Element => {
             {
                 weeklyVolunteerName &&
                 <div className={classes.weeklyVolunteerStyle}>
-                    <WeeklyVolunteer weeklyVolunteerName={weeklyVolunteerName} />
+                    <WeeklyVolunteer weeklyVolunteerName={weeklyVolunteerName} isDesktopOrLaptop={isDesktopOrLaptop}/>
                 </div>
             }
         </div>

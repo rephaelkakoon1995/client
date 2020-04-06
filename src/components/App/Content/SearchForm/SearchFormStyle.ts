@@ -10,8 +10,12 @@ const useStyles = makeStyles({
         width: '100%',
         height: '100%',
     },
-    root: {
+    rootDesktopOrLaptop: {
         width: '30vw',
+        maxHeight: '50vh'
+    },
+    rootTabletOrMobileDevice: {
+        width: '60vw',
         maxHeight: '50vh'
     },
     media: {

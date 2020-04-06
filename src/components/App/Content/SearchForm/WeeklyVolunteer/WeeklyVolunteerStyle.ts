@@ -9,11 +9,16 @@ const useStyles = makeStyles({
         flexDirection:'column',
         paddingTop:'2vh',
     },
-    imageStyle: {
+    imageDesktopOrLaptop: {
         width: '10vw',
         height: '20vh',
         paddingTop:'1vh'
-    }
+    },
+    imageTabletOrMobileDevice: {
+        width: '25vw',
+        height: '20vh',
+        paddingTop:'1vh'
+    },
 });
 
 export default useStyles;
