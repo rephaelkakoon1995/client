@@ -10,7 +10,7 @@ const Loader: React.FC<IProps> = ({ textInfo }: IProps): JSX.Element => {
         <div className={classes.loaderContainer}>
             {
                 textInfo &&
-                <Typography variant="h6">{textInfo}</Typography>
+                <Typography variant="h6" align='center'>{textInfo}</Typography>
             }
             <CircularProgress size={25} />
         </div>
