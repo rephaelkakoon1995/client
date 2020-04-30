@@ -21,6 +21,13 @@ const useStyles = makeStyles(theme => ({
             background: "rgb(240,240,240)",
          },
     },
+    inputStyleMobile: {
+        width: '35vw',
+        background:'rgb(240,240,240)',
+        '&:hover': {
+            background: "rgb(240,240,240)",
+         },
+    },
     buttonFindNext:{
         background:'white',
         "&:hover": {

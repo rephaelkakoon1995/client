@@ -5,7 +5,7 @@ const useStyles = makeStyles({
         backgroundImage: `url(${"assets/backgroundImage.jpg"})`,
         width:'100%',
         height:'100%',
-        marginTop:'10vh',
+        marginTop:'2vh',
     }
 });
 

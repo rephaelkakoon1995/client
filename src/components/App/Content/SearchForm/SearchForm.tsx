@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
-import Typography from '@material-ui/core/Typography';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
@@ -13,6 +12,10 @@ import useStyles from './SearchFormStyle';
 const SearchForm: React.FC = (): JSX.Element => {
     const classes = useStyles();
 
+    const isDesktopOrLaptop = useMediaQuery({
+        query: '(min-device-width: 1224px)'
+    });
+
     const getCurrentDate = (): string => {
         const currentDate: Date = new Date(Date.now());
         const year: number = currentDate.getFullYear();
@@ -22,7 +25,7 @@ const SearchForm: React.FC = (): JSX.Element => {
         return `${year}-${month}-${day}`;
     }
     const [dutyType, setDutyType] = useState('');
-    const [date, setDate]=useState(getCurrentDate());
+    const [date, setDate] = useState(getCurrentDate());
     const [points, setPoints] = useState(0);
     const [isValidDate, setIsValidDate] = useState(true);
 
@@ -37,33 +40,33 @@ const SearchForm: React.FC = (): JSX.Element => {
         setIsValidDate(isValidDateCheck(newDate));
     };
 
-    const handleChangePoints =  (event: React.ChangeEvent<{ value: unknown }>) => {
+    const handleChangePoints = (event: React.ChangeEvent<{ value: unknown }>) => {
         setPoints(event.target.value as number)
     };
 
-    const isValidDateCheck = (newDate:string) : boolean => {
+    const isValidDateCheck = (newDate: string): boolean => {
         const currentDate = new Date(Date.now());
         const [year, month, day] = newDate.split('-');
-        const newDateObject = new Date(Number(year), Number(month)-1, Number(day));
+        const newDateObject = new Date(Number(year), Number(month) - 1, Number(day));
 
         return (currentDate.getTime() < newDateObject.getTime());
     };
 
-    const isValidForm = () : boolean => {
+    const isValidForm = (): boolean => {
         return dutyType !== '' && isValidDate;
     };
 
     return (
         <div className={classes.container}>
             <div className={classes.inputContainer}>
-                <div style={{ paddingTop: '3vh', paddingLeft: '3vh' }}>
+                <div style={{ paddingTop: '2vh', paddingLeft: '3vh' }}>
                     <InputLabel style={{ color: 'rgb(26,26,26)', fontSize: '5vh' }}>מציאת תורן ל</InputLabel>
                 </div>
                 <FormControl variant='outlined'>
                     <Select
                         value={dutyType}
                         onChange={handleChangeDuty}
-                        className={classes.inputStyle}
+                        className={isDesktopOrLaptop ? classes.inputStyle : classes.inputStyleMobile}
                     >
                         <MenuItem value={'clean'}>נקיון</MenuItem>
                         <MenuItem value={'cook'}>מטבח</MenuItem>
@@ -85,7 +88,7 @@ const SearchForm: React.FC = (): JSX.Element => {
                     InputLabelProps={{
                         shrink: true,
                     }}
-                    className={classes.inputStyle}
+                    className={isDesktopOrLaptop ? classes.inputStyle : classes.inputStyleMobile}
                 />
             </div>
             <div className={classes.inputContainer} style={{ paddingLeft: '2vw' }}>
@@ -102,7 +105,7 @@ const SearchForm: React.FC = (): JSX.Element => {
                     variant="outlined"
                     inputProps={{ min: "0", step: "1" }}
                     className={classes.inputStyle}
-                    style={{ width: '5vw' }}
+                    style={isDesktopOrLaptop ? { width: '5vw' } : { width: '10vw' }}
                 />
                 <div style={{ paddingTop: '2vh', paddingRight: '3vh' }}>
                     <InputLabel style={{ color: 'rgb(26,26,26)', fontSize: '5vh' }}> נקודות </InputLabel>
