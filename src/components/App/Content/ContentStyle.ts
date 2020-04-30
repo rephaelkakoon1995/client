@@ -4,7 +4,7 @@ const useStyles = makeStyles({
     paperContainer: {
         backgroundImage: `url(${"assets/backgroundImage.jpg"})`,
         width:'100%',
-        height:'55%',
+        height:'100%',
         marginTop:'10vh',
     }
 });
